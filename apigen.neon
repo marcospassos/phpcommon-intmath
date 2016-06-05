@@ -1,0 +1,4 @@
+source:
+    - vendor/phpcommon/intmath/src
+title: PHPCommon IntMah API
+baseUrl: https://marcospassos.github.io/phpcommon-intmath/api/latest

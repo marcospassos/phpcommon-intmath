@@ -1,0 +1,22 @@
+{
+  "license": "MIT",
+  "description": "The PhpCommon IntMath API documentation",
+  "homepage": "https://marcospassos.github.io/phpcommon-intmath/api",
+  "authors": [
+    {
+      "name": "Marcos Passos",
+      "email": "marcos@marcospassos.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "bin-dir": "bin"
+  },
+  "require-dev": {
+    "php": "^5.5|^7.0",
+    "apigen/apigen": "~4.0",
+    "phpunit/phpunit": "~5.5",
+    "phpcommon/intmath": "dev-master"
+  }
+}
