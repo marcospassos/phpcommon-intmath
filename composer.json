@@ -1,0 +1,41 @@
+{
+  "name": "phpcommon/intmath",
+  "type": "library",
+  "description": "A library for arithmetic operations on integers that wraps around upon overflow.",
+  "keywords": ["phpcommon", "intmath", "math", "arithmetic", "integer", "number", "overflow"],
+  "license": "MIT",
+  "homepage": "https://github.com/marcospassos/phpcommon-intmath",
+  "authors": [
+    {
+      "name": "Marcos Passos",
+      "email": "marcos@marcospassos.com"
+    }
+  ],
+  "require": {
+    "php": "^5.3.0|^7.0"
+  },
+  "require-dev": {
+    "php": "^5.6|^7.0",
+    "phpunit/phpunit": "~5.4",
+    "scrutinizer/ocular": "~1.1",
+    "squizlabs/php_codesniffer": "~2.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "PhpCommon\\IntMath\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PhpCommon\\IntMath\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}

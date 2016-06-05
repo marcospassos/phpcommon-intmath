@@ -1,0 +1,26 @@
+language: php
+
+php:
+  - 5.6
+  - 7.0
+  - hhvm
+
+sudo: false
+
+before_script:
+  - travis_retry composer self-update
+  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
+
+script:
+  - vendor/bin/phpcs --standard=psr2 src/
+  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+
+after_script:
+  - if [[ $TRAVIS_PHP_VERSION != 'hhvm' && $TRAVIS_PHP_VERSION != '7.0' ]]; then php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover; fi
+
+after_success:
+  - if [ $TRAVIS_PHP_VERSION = '5.6' ] && [ ! -z $TRAVIS_TAG ] && [ $TRAVIS_PULL_REQUEST = 'false' ]; then ./generate-doc.sh; fi
+
+env:
+  global:
+    - secure: gHd6SqqHk05Q2f0iLrCKHYy2o5uq////Kcv/pjQoLX0p1mdD7CLccgyhG09V4vQt6Lpt3W0iot52vN8mZeObQDlZ0ORiXPADZZeMuOQrxS2ICB3GFn8AJW9RqeuCtvtH79gy7EMua6DY8PCeDdxX+yqWapQUhTcEbm5woix6bP1tuR2HHa3LV+VVLgxaI+9R4Yqh20v/TXkLsR2IGKYoncNIzy8SdprnNOq5qpxyHRd4ozITLAccuV3YNkLpJcMDCGOwzR38eLN15LOOOI4Df8ftBeiR0cu4+J+0ZUa2iivZGkGwiBSaIUGQArnwbBjkfRIwCyTnF0DeuvbGWLgYaEuvqr2YFiyCgZs5YG8pAqSYMWmGcw2iAY96Ijh279/DeVOLsPUEACCEJFWG8XqSAitWdrVZ8jT4D2hzQY3pUaBXcERd+7K0b+oety4zWlBN/pIfE3OR4EshaT/vMBSxMLpua6fBcF56xIrwJg46FaXzgEj91qZhPa6d+jnUgSYbtNWf333LeX2l1EaRmsEF+NhYqtvHipIylqS8KOUdJmEERx/92LCfwIZQrzRJ5iZEwdRARxfsyM4N7bx7BgU4olLM6Qt2IweiFsBmZntfkVc3Asjt8+pMfT35aooUuyEFuq9YJTh2c9xIy1LSaySQ0SXwq1Hy9/q4HXnpE4NHJYo=
