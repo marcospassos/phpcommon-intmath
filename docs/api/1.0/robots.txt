@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://marcospassos.github.io/phpcommon-intmath/api/latest/sitemap.xml
