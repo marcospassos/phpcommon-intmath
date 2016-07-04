@@ -311,22 +311,33 @@ class IntMath
             return;
         }
 
-        switch (true) {
-            case is_float($value) && is_infinite($value):
-                $type = $value < 0 ? '-INF' : 'INF';
-                break;
-
-            case is_float($value) && is_nan($value):
-                $type = 'NAN';
-                break;
-
-            default:
-                $type = gettype($value);
-        }
-
         throw new InvalidArgumentException(sprintf(
             'Expected an integer, but got "%s"',
-            $type
+            self::identify($value)
         ));
+    }
+
+    /**
+     * Returns a string that identifies the specified value.
+     *
+     * @param mixed $value The value to identify.
+     *
+     * @return string A string that identifies the specified value.
+     */
+    private static function identify($value)
+    {
+        if (!is_numeric($value) || !is_float($value)) {
+            return gettype($value);
+        }
+
+        if (is_infinite($value)) {
+            return $value < 0 ? '-INF' : 'INF';
+        }
+
+        if (is_nan($value)) {
+            return 'NAN';
+        }
+
+        return 'float';
     }
 }
