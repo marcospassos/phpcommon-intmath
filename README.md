@@ -1,4 +1,4 @@
-# IntMath
+# PHPCommon IntMath
 
 [![Build Status](https://travis-ci.org/marcospassos/phpcommon-intmath.svg?branch=master)](https://travis-ci.org/marcospassos/phpcommon-intmath)
 [![Code Coverage](https://scrutinizer-ci.com/g/marcospassos/phpcommon-intmath/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/marcospassos/phpcommon-intmath/?branch=master)
